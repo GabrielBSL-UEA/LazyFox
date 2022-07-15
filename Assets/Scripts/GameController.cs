@@ -8,11 +8,21 @@ public class GameController : MonoBehaviour
     [SerializeField] private GameObject defeatPanel;
     [SerializeField] private GameObject victoryPanel;
 
+
     private AudioSource audioSource;
 
     private void Awake()
     {
         TryGetComponent(out audioSource);
+    }
+
+    public void GoToMenu()
+    {
+        SceneManager.LoadScene("Scenes/Gameplay");
+    }
+    public void Restart()
+    {
+        SceneManager.LoadScene("Scenes/Gameplay");
     }
 
     public void ActivateVictoryPanel()
