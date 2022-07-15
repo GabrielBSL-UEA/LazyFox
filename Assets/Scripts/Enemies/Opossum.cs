@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Opossum : MonoBehaviour
 {
     [SerializeField] private float speed;
+    public string _sceneGameOver;
 
     private BoxCollider2D boxCollider2d;
     private Rigidbody2D rigidbody2D;
@@ -38,7 +40,9 @@ public class Opossum : MonoBehaviour
     {
         if (collision.collider.CompareTag("Player"))
         {
-            FindObjectOfType<GameController>().ActivateDefeatPanel();
+            SceneManager.LoadScene(_sceneGameOver);
+            //FindObjectOfType<GameController>().ActivateDefeatPanel();
+
         }
     }
 }
