@@ -12,6 +12,7 @@ public class PlayerMovement : MonoBehaviour
     private float currentDirection;
 
     private Rigidbody2D rb2D;
+    private int Jumps = 2;
     private bool isJumping;
 
     private AudioSource audioSource;
@@ -34,12 +35,13 @@ public class PlayerMovement : MonoBehaviour
 
     public void TryJumping()
     {
-        if (isJumping)
+        if (Jumps < 1)
         {
             return;
         }
 
         audioSource.Play();
+        Jumps--;
         isJumping = true;
         rb2D.velocity = new Vector2(rb2D.velocity.x, 0);
         rb2D.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
@@ -53,5 +55,6 @@ public class PlayerMovement : MonoBehaviour
         }
 
         isJumping = false;
+        Jumps = 2;
     }
 }
